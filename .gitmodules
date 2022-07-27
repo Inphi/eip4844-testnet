@@ -1,0 +1,3 @@
+[submodule "lib/forge-std"]
+    path = genesis-gen/lib/forge-std
+    url = https://github.com/foundry-rs/forge-std
