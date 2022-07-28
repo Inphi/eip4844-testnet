@@ -14,3 +14,6 @@ genesis.ssz: geth_genesis.json deposit-data-1657723220.json
 	${BEACON_GEN} --output-ssz=./genesis.tmp.ssz --deposit-json-file ./deposit-data-1657723220.json --config-name eip4844
 	${BEACON_GEN_EDIT} -file ./genesis.tmp.ssz  -genesis-time ${GENESIS_TIME} -eth1-blockhash ${GENESIS_HASH}
 	mv ./genesis.tmp.ssz ./genesis.ssz
+
+clean:
+	rm geth_genesis.json genesis.ssz
