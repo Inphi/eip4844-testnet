@@ -11,4 +11,4 @@ genesis.ssz: geth_genesis.json deposit-data-1657723220.json
 	./genssz.sh
 
 clean:
-	rm geth_genesis.json genesis.ssz
+	rm -f geth_genesis.json genesis.ssz
