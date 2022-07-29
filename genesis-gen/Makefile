@@ -7,7 +7,7 @@ geth_genesis.json: base_genesis.json src/GenDeposit.sol
 	forge build
 	./make-genesis.sh
 
-genesis.ssz: geth_genesis.json deposit-data-1657723220.json
+genesis.ssz: geth_genesis.json deposit_data.json
 	./genssz.sh
 
 clean:
