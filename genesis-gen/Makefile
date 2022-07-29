@@ -1,3 +1,6 @@
+.PHONY: default
+default: genesis.ssz ;
+
 GETH=./geth
 GETH_DATADIR := $(shell mktemp -d)
 BEACON_GEN=./gen-beacon-genesis
