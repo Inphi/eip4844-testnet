@@ -15,19 +15,29 @@ contract GenDeposit is Script {
 
     // [{"pubkey": "8abfc6fe54c89651f4779c66cb8777155479e18f9d2d7a004e2f51ec97a7e0a1f9a23acd6556ec543fc18fb6f2d83c33", "withdrawal_credentials": "003f4427f9d850597dbbc8d7a9145590e91ad2f74d02d0bce299197596828f52", "amount": 32000000000, "signature": "a6b9536c29a9935f4d1736ec7d9671758ef85a3f25728eb79e23ea175aa3e68e80091701cbbb6732699e17fd7bb5176a0280df41f77cc1791ae3d844a7d15f69dc86230c3e53b5f7ece976a07692a36eac3e2648ce07b5e79384af6ed5e1542d", "deposit_message_root": "4616b632983bafabef0a93da95cc8da66deee98796ae7b513d589d1598578c35", "deposit_data_root": "7ffb2ad21bae18840d9c97b542385ebac90cb9f4f376cbb57bcb0e14da6f0069", "fork_version": "00000ffd", "network_name": "eip4844", "deposit_cli_version": "2.2.0"}, {"pubkey": "b03edee60d4cceeb430d5be3849c785ec489029043fd9fb52aa58f0eb885c7889e61dda6ec52173313f5312c6959ee08", "withdrawal_credentials": "00c9299b69cfe2549b8f6431b3508220ffbdf6fede5de3742de4e69afba45a0e", "amount": 32000000000, "signature": "9004524c827f705e5c2be296e1a6cd7db6da97936c20580e18624f436411dbdbcdaf6755ddc0c867d3bca1b6ab0448800efb93edc278ee3c3c9104678e0fd6eb92382df17230a4a284281764688be9f3eb1cf3ffb59513fe6b355467bb0ee14e", "deposit_message_root": "ecadf1440d7541edb2ab7c24058debbef660672cca581c3318b447fd2b082d91", "deposit_data_root": "12d66a944bc1546b995e81f7b1ff853694e144f21b07459cc9c337e096b2e133", "fork_version": "00000ffd", "network_name": "eip4844", "deposit_cli_version": "2.2.0"}]
     function run() public {
-        bytes memory pubkey = hex"8ade993e34b4ab947f36f37aa6a952e67a621e9374714e76a8f7cb928a7df3f313c438ae44a769798c18d083b627d812";
-        bytes memory withdrawal_credentials = hex"006bc01a5bac4df10c402240fbc3ac0aef81d0e790b91ca079211a6f8afa8928";
-        bytes memory signature = hex"b349997e89f84e4d2179a6141695f510a60a40045bd1169fda77d40522440ca8d2396ebd3ae827b35ca882e460429b27092af36ebdef96f92e076f0916a0c89f8aff0b1774aff18f44a82ada9892c270b4c8aa76c583ff5f6a19850dc0192cd9";
+        bytes memory pubkey = hex"95f29abdf24712416ce1eb490fd3985ed0b9223b5370fe925d9d4ff500a684edd25703f94b0819d562b311656f7963e7";
+        bytes memory withdrawal_credentials = hex"008c3eb186346556b0f7b1e580ba8e1d49ea61768dfcc7025d105fb156bb4db6";
+        bytes memory signature = hex"b1f7ceb895a027c1a7a94feef7b577e773ace100ff69a7e5aed92e94abaec2b3fe3144828b30aa0ec520388431bdcfca06352b77991197149044befd4747ddb08796168497c77447aaa0e06e26bf7fe68b49c62e0bad69c655e795c8569f6a0c";
         run_deposit(pubkey, withdrawal_credentials, signature, 32000000000);
 
-        pubkey = hex"80a20b36b7f4def29b2336cf347ca2d3d54ea8e92b15fcf1601c1e9b6738ed78b3ebabfcbf58bc7f8b35760c13c1ff07";
-        withdrawal_credentials = hex"00b82e68db1b96bbe1c647566cf8d9460c753b7c8f05bebcf9dcec83b4bf8378";
-        signature = hex"8a99f3e0efb50b414bc243cd090de5a56d1b7f7e92ec5e0136552a85f88a4ee1e08b18fa394cf01919ebc845b1c2e79706885e9ca33d56850c39a1323fea6ed8cae3907ca7713286ef7aa41862631ac9080aa017f08ef2fdf63e1c6b1f05fe6b";
+        pubkey = hex"ab773b0b098d48950ba4fa1c49351639bd9602cae662accd97721f2da1daa86a80fac21c52e1f214d35c958aff9753eb";
+        withdrawal_credentials = hex"00b10d24943d3de225eab1f26336706b855d42de0ee0b93bb15885b0797f5990";
+        signature = hex"80779655f77104923693a67820087ab20a632dc7e01a1e2128c103c03c0101c5ecb2d32676ae4b1d226aa37e8d88e784014c2048b342eb6ca0332e6844af2b88867f34d2900b5224c264ed1ffbc92244c7167d7cc5b9fb2128d385742197a87b";
         run_deposit(pubkey, withdrawal_credentials, signature, 32000000000);
 
-        pubkey = hex"9461af50598504f24a7c71ceb89f4dc9cc19a2f31ade08688a1e3d3a7625474367780b9eedc7ef8c2f929d87623d7e68";
-        withdrawal_credentials = hex"007af614a47ae621d4ecccee5354ff3f16229d1fa4b9261ab7c423b16f93d613";
-        signature = hex"b3b90ee554483a709ed4f629c0aff4cbde6678d09a33435c11683983b8a247426c7cf6d7b8438dc52b751868a93b6c7713730d6577c37c10760fe5ad16402407394d225687d0aeadcdc808522757f6d56d5635791f8b930bb32f283490938bb3";
+        pubkey = hex"8ff9c36184271ee997d1ded63079cdca709c86f0e7726d4686bb23490e7fe9944cff03af26ebbd64368cede8e25a0f45";
+        withdrawal_credentials = hex"0099e0fd2733ccf0aa250439aed612b7e491b5bb079bd3389b76891a7c59258e";
+        signature = hex"8a0a4cb5717205d4d339e5325adf00698270269acebeda853be3669083b2c296e947315b40c401c8f2f1c02d33752f9c062dc88186f5d32a15690ac5f970a77ee9ebf831f9fb1355826af2b5aa06cb44d29d125f19430946d8ab7ff39253003d";
+        run_deposit(pubkey, withdrawal_credentials, signature, 32000000000);
+
+        pubkey = hex"af568e5d4ad65f6dcdf62af1cb54fc38b2ac38100bc1031f9899134c640e8b1cf5acf135ee27165b6b40d07ad82c2b1a";
+        withdrawal_credentials = hex"00614050f644e6b85d5a98ef5b8819a2b3f4a9156910814ae2b2fd487e2dbb09";
+        signature = hex"9102529a662629930ca6626554ac8bcd59a37217230d91a2c13b54b6ab8ff854726a1a69b1341e68cce9ad13e16771b306ab8b56b66980cb3cd0c80757f0860466dca44cb5c52bee85a2798ddd60970b2ec9f31dad9eff8018699beb18804b4c";
+        run_deposit(pubkey, withdrawal_credentials, signature, 32000000000);
+
+        pubkey = hex"8becf10b9c9ec0cd609f479b6676e736d3300bf798fd06549c788a3353dc0cb5e23d23f44964c1692d6b31365f60041d";
+        withdrawal_credentials = hex"009231c34c0be79cc28d58a5d8be1179842347e3f41d6c8ef3acb3d79b43769d";
+        signature = hex"98491500560217e0005e2e15f4e222965f6501c342c19fd67d893c7e51b779f8075436b4432ed36bf09f1260daf7e2d710200f58a09d08f5d1cd24ee9f04f812f4a8367fb940cd3b95ca8daed565a0ceed90f4829893aaaa0c7d6f2830867068";
         run_deposit(pubkey, withdrawal_credentials, signature, 32000000000);
 
         for (uint i = 0; i < 32; i++) {
@@ -40,7 +50,7 @@ contract GenDeposit is Script {
         }
 
         bytes32 count = vm.load(address(dc), bytes32(uint256(32)));
-        if (uint256(count) != 3) {
+        if (uint256(count) != 5) {
             revert("invalid number of deposits");
         }
     }
