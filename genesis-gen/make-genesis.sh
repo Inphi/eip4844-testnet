@@ -27,7 +27,13 @@ BRANCH2_VAL=$(echo $LOGS | jq '.logs[2]' | sed 's/"//g')
 COUNT_SLOT=0x0000000000000000000000000000000000000000000000000000000000000020
 COUNT_VAL=0x0000000000000000000000000000000000000000000000000000000000000005
 # Deposit contract balance (64 ETH)
-BALANCE=0x3782dace9d9000000
+DEPOSIT_CONTRACT_BALANCE=0x3782dace9d9000000
+
+# 100_000 eth
+ACCOUNT_BAL=0x152d02c7e14af6800000
+ACCOUNT_1=0xBB427322C6C4Ed83cDCA287337AeF5bA734D0110
+ACCOUNT_2=0x10F5d45854e038071485AC9e402308cF80D2d2fE
+ACCOUNT_3=0x60E61a5b5787aCBDAB431Ac7cAFEB1eFbF9b4d9e
 
 jq ". | .alloc.\"$DEPOSIT_CONTRACT_ADDRESS\".code = \"$DEPOSIT_CONTRACT_BYTECODE\"" < ./base_genesis.json | \
     jq ". | .timestamp = \"$TIME\"" | \
@@ -35,4 +41,7 @@ jq ". | .alloc.\"$DEPOSIT_CONTRACT_ADDRESS\".code = \"$DEPOSIT_CONTRACT_BYTECODE
     jq ". | .alloc.\"$DEPOSIT_CONTRACT_ADDRESS\".storage.\"$BRANCH1_SLOT\" = \"$BRANCH1_VAL\"" | \
     jq ". | .alloc.\"$DEPOSIT_CONTRACT_ADDRESS\".storage.\"$BRANCH2_SLOT\" = \"$BRANCH2_VAL\"" | \
     jq ". | .alloc.\"$DEPOSIT_CONTRACT_ADDRESS\".storage.\"$COUNT_SLOT\" = \"$COUNT_VAL\"" | \
-    jq ". | .alloc.\"$DEPOSIT_CONTRACT_ADDRESS\".balance = \"$BALANCE\"" > ./geth_genesis.json
+    jq ". | .alloc.\"$DEPOSIT_CONTRACT_ADDRESS\".balance = \"$DEPOSIT_CONTRACT_BALANCE\"" | \
+    jq ". | .alloc.\"$ACCOUNT_1\".balance = \"$ACCOUNT_BAL\"" | \
+    jq ". | .alloc.\"$ACCOUNT_2\".balance = \"$ACCOUNT_BAL\"" | \
+    jq ". | .alloc.\"$ACCOUNT_3\".balance = \"$ACCOUNT_BAL\"" > ./geth_genesis.json
