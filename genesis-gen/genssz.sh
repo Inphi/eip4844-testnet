@@ -8,6 +8,7 @@ BEACON_GEN=./gen-beacon-genesis
 BEACON_GEN_EDIT=./beacon-genesis-edit
 
 # We have 8 mins to setup the beacon node after generation
+# The beacon chain must be up and running before then to ensure that the 4844 upgrade occurs in time - during the slot the EL hardforks
 GENESIS_TIME=$(($(date '+%s')+500))
 
 ${GETH} --datadir ${GETH_DATADIR} init ./geth_genesis.json

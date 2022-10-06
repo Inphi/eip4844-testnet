@@ -7,8 +7,6 @@ function get_deployed_bytecode() {
 DEPOSIT_CONTRACT_ADDRESS=0x8A04d14125D0FDCDc742F4A05C051De07232EDa4
 DEPOSIT_CONTRACT_BYTECODE=$(get_deployed_bytecode out/DepositContract.sol/DepositContract.json)
 
-TIME=$(date '+%s')
-
 LOGS=$(forge script GenDeposit --json | grep '"logs"')
 
 # Deposit contract branch[0]
@@ -36,7 +34,6 @@ ACCOUNT_2=0x10F5d45854e038071485AC9e402308cF80D2d2fE
 ACCOUNT_3=0x60E61a5b5787aCBDAB431Ac7cAFEB1eFbF9b4d9e
 
 jq ". | .alloc.\"$DEPOSIT_CONTRACT_ADDRESS\".code = \"$DEPOSIT_CONTRACT_BYTECODE\"" < ./base_genesis.json | \
-    jq ". | .timestamp = \"$TIME\"" | \
     jq ". | .alloc.\"$DEPOSIT_CONTRACT_ADDRESS\".storage.\"$BRANCH0_SLOT\" = \"$BRANCH0_VAL\"" | \
     jq ". | .alloc.\"$DEPOSIT_CONTRACT_ADDRESS\".storage.\"$BRANCH1_SLOT\" = \"$BRANCH1_VAL\"" | \
     jq ". | .alloc.\"$DEPOSIT_CONTRACT_ADDRESS\".storage.\"$BRANCH2_SLOT\" = \"$BRANCH2_VAL\"" | \
