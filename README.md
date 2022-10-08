@@ -4,4 +4,4 @@
 - md5sum `756689ce3419272773eed6847c64dd45`
 
 ## Beacon Genesis
-- md5sum `7009b433f09ba6153de82e8cd9ab9e90`
+- md5sum `a8692b7159c753bd5953b51a582fe651`
