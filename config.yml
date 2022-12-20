@@ -1,5 +1,5 @@
 CONFIG_NAME: testnet
-PRESET_BASE: testnet
+PRESET_BASE: mainnet
 
 # Genesis
 # The genesis fork version looks weird for legacy reasons
