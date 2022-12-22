@@ -1,13 +1,27 @@
 #!/usr/bin/env bash
 
+set -Eeuo pipefail
+
 function get_deployed_bytecode() {
     echo $(jq -r .deployedBytecode.object $1)
 }
 
-DEPOSIT_CONTRACT_ADDRESS=0x8A04d14125D0FDCDc742F4A05C051De07232EDa4
+DEPOSIT_CONTRACT_ADDRESS=0x4242424242424242424242424242424242424242
 DEPOSIT_CONTRACT_BYTECODE=$(get_deployed_bytecode out/DepositContract.sol/DepositContract.json)
 
-TIME=$(date '+%s')
+# TODO: replace with mainnet's
+SECONDS_PER_SLOT=$(cat $BEACON_CONFIG | yq -r .SECONDS_PER_SLOT)
+SLOTS_PER_EPOCH=$(cat $BEACON_CONFIG | yq -r .SLOTS_PER_EPOCH)
+
+CAPELLA_FORK_EPOCH=$(cat $BEACON_CONFIG | yq -r .CAPELLA_FORK_EPOCH)
+EIP4844_FORK_EPOCH=$(cat $BEACON_CONFIG | yq -r .EIP4844_FORK_EPOCH)
+
+GENESIS_TIME=$(($(date +%s) + SECONDS_TILL_GENESIS))
+CAPELLA_TIME=$((GENESIS_TIME + (CAPELLA_FORK_EPOCH * SLOTS_PER_EPOCH * SECONDS_PER_SLOT)))
+EIP4844_TIME=$((GENESIS_TIME + (EIP4844_FORK_EPOCH * SLOTS_PER_EPOCH * SECONDS_PER_SLOT)))
+echo $GENESIS_TIME > ./genesis_time.txt
+
+echo "Genesis time is $GENESIS_TIME ($(date -d "@$GENESIS_TIME"))"
 
 LOGS=$(forge script GenDeposit --json | grep '"logs"')
 
@@ -36,7 +50,9 @@ ACCOUNT_2=0x10F5d45854e038071485AC9e402308cF80D2d2fE
 ACCOUNT_3=0x60E61a5b5787aCBDAB431Ac7cAFEB1eFbF9b4d9e
 
 jq ". | .alloc.\"$DEPOSIT_CONTRACT_ADDRESS\".code = \"$DEPOSIT_CONTRACT_BYTECODE\"" < ./base_genesis.json | \
-    jq ". | .timestamp = \"$TIME\"" | \
+    jq ". | .timestamp = \"$GENESIS_TIME\"" | \
+    jq ". | .config.shanghaiTime = $CAPELLA_TIME" | \
+    jq ". | .config.shardingForkTime = $EIP4844_TIME" | \
     jq ". | .alloc.\"$DEPOSIT_CONTRACT_ADDRESS\".storage.\"$BRANCH0_SLOT\" = \"$BRANCH0_VAL\"" | \
     jq ". | .alloc.\"$DEPOSIT_CONTRACT_ADDRESS\".storage.\"$BRANCH1_SLOT\" = \"$BRANCH1_VAL\"" | \
     jq ". | .alloc.\"$DEPOSIT_CONTRACT_ADDRESS\".storage.\"$BRANCH2_SLOT\" = \"$BRANCH2_VAL\"" | \
