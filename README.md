@@ -1,7 +1,7 @@
 # EIP-4844 Testnet Settings
 
 ## ETH1 genesis
-- md5sum `6841cb50e8e6570d21e57af27a95290b`
+- md5sum `13f244825e37b53e55e673a763f220aa`
 
 ## Beacon Genesis
-- md5sum `287782018ae6fa9c1b94dcc32e7b268c`
+- md5sum `c7b96885c1ece839f700e6ca9dc1627e`
